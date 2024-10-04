@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang cho người dùng</title>
+    <link rel="stylesheet" href="user.css">
+    <script src="user.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Quán Nhậu Bà Dân</h1>
+    </header>
+    <main>
+        <section id="product-list">
+            <div class="product-item" id="product1">
+                <img src="product1.jpg" alt="Product 1">
+                <h3>Bia Ken</h3>
+                <p>Giá: <span id="price-product1"></span></p>
+                <p>Số lượng tồn kho: <span id="quantity-product1"></span></p>
+                <div class="quantity-controls">
+                    <button onclick="decrementQuantity('product1')">-</button>
+                    <span id="quantity-input-product1">0</span>
+                    <button onclick="incrementQuantity('product1')">+</button>
+                    <button onclick="addToCart('product1')">Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+            <div class="product-item" id="product2">
+                <img src="product2.jpg" alt="Product 2">
+                <h3>Rượu Atiso đỏ</h3>
+                <p>Giá: <span id="price-product1"></span></p>
+                <p>Số lượng tồn kho: <span id="quantity-product2"></span></p>
+                <div class="quantity-controls">
+                    <button onclick="decrementQuantity('product2')">-</button>
+                    <span id="quantity-input-product2">0</span>
+                    <button onclick="incrementQuantity('product2')">+</button>
+                    <button onclick="addToCart('product2')">Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+            <div class="product-item" id="product3">
+                <img src="product3.jpg" alt="Product 3">
+                <h3>Gà Chiên Nước Mắm</h3>
+                <p>Giá: <span id="price-product1"></span></p>
+                <p>Số lượng tồn kho: <span id="quantity-product3"></span></p>
+                <div class="quantity-controls">
+                    <button onclick="decrementQuantity('product3')">-</button>
+                    <span id="quantity-input-product3">0</span>
+                    <button onclick="incrementQuantity('product3')">+</button>
+                    <button onclick="addToCart('product3')">Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+        </section>
+        <aside id="sidebar">
+            <div id="search-bar">
+                <input type="text" id="search-input" placeholder="Tìm kiếm sản phẩm...">
+                <button onclick="searchProducts()">Tìm kiếm</button>
+            </div>
+            <div id="cart">
+                <h2>Giỏ hàng</h2>
+                <ul id="cart-items">
+                    <!-- Danh sách các sản phẩm trong giỏ hàng sẽ được cập nhật bằng JavaScript -->
+                </ul>
+                <button id="checkout-btn">Thanh toán</button>
+            </div>
+        </aside>
+    </main>
+    <footer>
+        <p>Cửa hàng: Chi nhánh Bảo Lộc, Lâm Đồng &copy;</p>
+    </footer>
+</body>
+</html>

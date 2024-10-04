@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý kho hàng</title>
+  <link rel="stylesheet" href="inventory_management.css">
+</head>
+<body>
+  <header>
+    <h1>Quản lý kho hàng</h1>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="shelf-section">
+        <h2>Kệ hàng 1</h2>
+        <div class="grid-container" id="shelf1">
+          <!-- Các ô kệ hàng sẽ được tạo động tại đây -->
+        </div>
+      </div>
+
+      <div class="shelf-section">
+        <h2>Kệ hàng 2</h2>
+        <div class="grid-container" id="shelf2">
+          <!-- Các ô kệ hàng sẽ được tạo động tại đây -->
+        </div>
+      </div>
+    </div>
+f
+    <section id="declareForm">
+      <h2>Khai báo loại hàng</h2>
+      <form>
+        <label for="shelfID">ID kệ hàng (1-18):</label>
+        <input type="number" id="shelfID" min="1" max="18" required><br>
+        <label for="type">Loại hàng:</label>
+        <input type="text" id="type" required><br>
+        <button type="button" onclick="declareItem()">Khai báo</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="inventory_management.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lịch sử xuất/nhập kho</title>
+  <link rel="stylesheet" href="history.css">
+</head>
+<body>
+  <header>
+    <h1>Lịch sử xuất/nhập kho</h1>
+  </header>
+
+  <main>
+    <section id="filter">
+      <h2>Chọn ngày để xem lịch sử</h2>
+      <form id="dateForm">
+        <label for="startDate">Ngày bắt đầu:</label>
+        <input type="date" id="startDate" required>
+        <label for="endDate">Ngày kết thúc:</label>
+        <input type="date" id="endDate" required>
+        <button type="submit">Lọc</button>
+      </form>
+    </section>
+
+    <section id="history">
+      <h2>Bảng lịch sử xuất/nhập kho</h2>
+      <table id="historyTable">
+        <thead>
+          <tr>
+            <th>Tên hàng</th>
+            <th>Mã hàng</th>
+            <th>Số lượng</th>
+            <th>Giờ</th>
+            <th>Loại hoạt động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Các dòng lịch sử sẽ được tạo động tại đây -->
+        </tbody>
+      </table>
+      <button id="exportExcel">Xuất Excel</button>
+      <button id="exportPDF">Xuất PDF</button>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="history.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.14/jspdf.plugin.autotable.min.js"></script>
+
+</body>
+</html>

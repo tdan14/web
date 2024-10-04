@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ Hệ Thống Kho</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header>
+        <h1>Trang Chủ Hệ Thống Kho</h1>
+    </header>
+    <main>
+        <div class="shelves-container">
+            <section id="shelfX" class="shelf">
+                <h2>Kệ Hàng 1</h2>
+                <div class="grid">
+                    <!-- Các ô kệ hàng sẽ được tạo động tại đây -->
+                    <!-- Nội dung đã có -->
+                </div>
+            </section>
+            <section id="shelfY" class="shelf">
+                <h2>Kệ Hàng 2</h2>
+                <div class="grid">
+                    <!-- Các ô kệ hàng sẽ được tạo động tại đây -->
+                    <!-- Nội dung đã có -->
+                </div>
+            </section>
+        </div>
+        <aside>
+            <section id="notifications">
+                <h2>Thông Báo Từ Hệ Thống</h2>
+                <ul id="notificationList">
+                    <!-- Danh sách thông báo từ Arduino sẽ được cập nhật tự động -->
+                </ul>
+            </section>
+            <section id="controls">
+                <h2>Điều Khiển Hệ Thống</h2>
+                <div id="systemControls">
+                    <button id="powerButton">Bật/Tắt Hệ Thống</button>
+                    <button id="emergencyStop">Dừng Khẩn Cấp</button>
+                </div>
+                <div id="functions">
+                    <button id="customizeProducts">Quản Lý Thông Tin Hàng Hóa</button>
+                    <button id="viewHistory">Xem Lịch Sử Xuất/Nhập Kho</button>
+                    <button id="addStock">Nhập Hàng</button>
+                    <button id="exportOrders">Xuất Hàng</button>
+                </div>
+            </section>
+        </aside>
+    </main>
+    <script src="admin.js"></script>
+</body>
+</html> 

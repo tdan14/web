@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tdann</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    h1 {
+      color: #fff;
+      background-color: #3a3a3a;
+      padding: 20px;
+      margin: 0;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+      justify-content: center;
+      padding: 40px;
+      margin-top: 20px;
+    }
+    .box {
+      border-radius: 10px;
+      background: #f7f7f7;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s, background 0.3s;
+    }
+    .box:hover {
+      transform: translateY(-5px);
+      background-color: #ddd;
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    }
+    .box h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #555;
+    }
+    .box input {
+      width: 90%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+      transition: border 0.2s;
+    }
+    .box input:focus {
+      border-color: #999;
+    }
+    .box button {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #666;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .box button:hover {
+      background-color: #444;
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #3a3a3a;
+      color: #fff;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Quản lý hệ thống kho hàng</h1>
+  <div class="container" id="warehouse-container">
+    <!-- Các ô hàng từ 1 đến 18 sẽ được tạo tự động bằng JavaScript -->
+  </div>
+  <footer>
+    © Quản lí kho hàng chi nhánh Bảo Lộc
+  </footer>
+  <script>
+    const espIP = "192.168.4.1";  // Địa chỉ IP của ESP8266
+
+    // Tạo 18 ô hàng trong giao diện
+    const warehouseContainer = document.getElementById('warehouse-container');
+    for (let i = 1; i <= 18; i++) {
+      const box = document.createElement('div');
+      box.className = 'box';
+      box.innerHTML = `
+        <h3>Ô hàng ${i}</h3>
+        <input type="text" id="barcode${i}" placeholder="Nhập mã vạch">
+        <button onclick="registerBarcode(${i})">Đăng ký</button>
+      `;
+      warehouseContainer.appendChild(box);
+    }
+
+    // Hàm đăng ký mã vạch cho từng ô hàng
+    function registerBarcode(position) {
+      const barcodeInput = document.getElementById(`barcode${position}`);
+      const barcode = barcodeInput.value.trim();
+      
+      if (barcode === "") {
+        alert("Vui lòng nhập mã vạch!");
+        return;
+      }
+
+      // Tạo đối tượng dữ liệu để gửi
+      const data = {
+        position: position,
+        barcode: barcode
+      };
+
+      // Gửi thông tin đến ESP8266 qua HTTP POST request
+      fetch(`http://${espIP}/registerBarcode`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(result => {
+        if (result.status === "success") {
+          alert(`Đã đăng ký mã vạch cho ô hàng ${position}`);
+        } else {
+          alert("Đăng ký thất bại. Vui lòng thử lại!");
+        }
+      })
+      .catch(error => {
+        console.error("Lỗi kết nối ESP8266:", error);
+        alert("Không thể kết nối đến ESP8266.");
+      });
+    }
+  </script>
+</body>
+</html>

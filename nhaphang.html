@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Thông Tin Hàng Hóa</title>
+    <link rel="stylesheet" href="nhaphang.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Quản Lý Thông Tin Hàng Hóa</h1>
+    </header>
+    <main>
+      <form id="productForm">
+        <label for="productName">Tên Sản Phẩm:</label>
+        <input type="text" id="productName" name="productName" required />
+
+        <label for="productImage">Hình Ảnh Sản Phẩm (URL):</label>
+        <input type="text" id="productImage" name="productImage" required />
+
+        <label for="productPrice">Giá Tiền:</label>
+        <input type="number" id="productPrice" name="productPrice" required />
+
+        <button type="submit">Thêm Sản Phẩm</button>
+      </form>
+      <section id="productList">
+        <h2>Danh Sách Sản Phẩm</h2>
+        <ul id="products"></ul>
+      </section>
+    </main>
+    <script src="nhaphang.js"></script>
+  </body>
+</html>
